@@ -1,4 +1,4 @@
-#include "stdio.h"
+#include "interface.h"
 
 int CreateAndFormat_Partition()
 {
@@ -35,8 +35,33 @@ int main()
     {
         printf("Partition Creation Failed\n");
     }
-    
+    // now initializing virtual directory table
+    DynamicArray virt_DirectoryTable;
+    virt_DirectoryTable.size = sizeof(virt_DirectoryTable.arr);
 
+    // initiliazing virtual FAT
+    int virtualFAT [500];  // 500 Blocks of memory
+
+    // initializing virtual Free List
+    int FreeList [500];
+    
+    //return the command we want to perform
+    char* complete_command=interface(); 
+
+    cJSON* json_str=commandParser(complete_command);
+    cJSON *item = cJSON_GetObjectItemCaseSensitive(json_str, "command");
+    //printf("%s\n", item->valuestring); 
+
+    // Command Conditions
+    if(item->valuestring == "touch")
+    {
+        // for making a file
+    }
+    else if(item->valuestring == "mkdir")
+    {
+        // for making a directory
+
+    }
 }
 
 
@@ -55,5 +80,7 @@ int main()
 //     }
 //     return 0;
 // }
+
+
 
 
