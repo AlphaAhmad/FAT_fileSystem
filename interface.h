@@ -16,25 +16,25 @@ void print_help() {
     printf("  clear   - Clear the screen\n");
     printf("  help    - Show available commands\n");
     printf("  exit    - Exit the interface\n");
-    printf("  echo    - Repeat the input back\n");
+    printf("  echo    - Repeat the input b else ack\n");
 }
 
 char* interface() {
     char command[MAX_CMD_LEN];
     char input[MAX_CMD_LEN];
 
-    printf("Welcome to the C Terminal Interface!\n");
-    printf("Type 'help' for a list of commands.\n\n");
+    // printf("Welcome to the C Terminal Interface!\n");
+    // printf("Type 'help' for a list of commands.\n\n");
 
     while (1) {
         printf("C-Terminal> "); // Command prompt
         fgets(command, MAX_CMD_LEN, stdin); // Read user input
         command[strcspn(command, "\n")] = 0; // Remove trailing newline
 
-        if (strcmp(command, "exit") == 0) {
-            printf("Exiting... Goodbye!\n");
-            return NULL;
-        } else if (strcmp(command, "clear") == 0) {
+        // if (strcmp(command, "exit") == 0) {
+        //     printf("Exiting... Goodbye!\n");
+        //     return NULL;}
+        if (strcmp(command, "clear") == 0) {
             clear_screen();
         } else if (strcmp(command, "help") == 0) {
             print_help();
